@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Sunucu Bilgisi</title>
+</head>
+<body>
+
+  <h1>Sunucu Bilgisi</h1>
+  <p id="serverName">Sunucu adı yükleniyor...</p>
+
+  <script>
+    
+    fetch('http://localhost:3000/api/discord-server-info')
+      .then(response => response.json())
+      .then(data => {
+        const serverNameElement = document.getElementById('serverName');
+        serverNameElement.textContent = `Sunucu Adı: ${data.serverName}`;
+      })
+      .catch(error => console.error('Sunucu bilgileri alınamadı', error));
+  </script>
+
+</body>
+</html>
